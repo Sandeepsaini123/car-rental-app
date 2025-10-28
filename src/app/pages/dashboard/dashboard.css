@@ -1,0 +1,46 @@
+.dashboard-card {
+  border-radius: 15px;
+  padding: 20px;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+.gradient-blue {
+  background: linear-gradient(135deg, #2193b0, #6dd5ed);
+}
+.gradient-green {
+  background: linear-gradient(135deg, #00b09b, #96c93d);
+}
+.gradient-orange {
+  background: linear-gradient(135deg, #f7971e, #ffd200);
+}
+.gradient-pink {
+  background: linear-gradient(135deg, #ff416c, #ff4b2b);
+}
+
+.card {
+  border: none;
+}
+.card-header {
+  font-size: 1rem;
+  background: #f8f9fa !important;
+  border-bottom: 1px solid #ddd;
+}
+
+.recent-bookings {
+  max-height: 260px;
+  overflow-y: auto;
+}
+.booking-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+.booking-item:last-child {
+  border-bottom: none;
+}

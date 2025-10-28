@@ -1,0 +1,99 @@
+ .parent {
+     background: linear-gradient(135deg, #1e3c72, #2a5298);
+     height: 100vh;
+     display: flex;
+     align-items: center;
+     justify-content: center;
+     font-family: 'Poppins', sans-serif;
+ }
+
+ .login-card {
+     background: linear-gradient(135deg, #ffffff, #e6f0ff);
+     border-radius: 15px;
+     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+     padding: 40px;
+     width: 100%;
+     max-width: 400px;
+     animation: fadeInUp 1s ease;
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+
+ .login-card:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+ }
+
+ @keyframes fadeInUp {
+     0% {
+         transform: translateY(40px);
+         opacity: 0;
+     }
+
+     100% {
+         transform: translateY(0);
+         opacity: 1;
+     }
+ }
+
+ .login-card h3 {
+     text-align: center;
+     margin-bottom: 25px;
+     font-weight: 700;
+     color: #1e3c72;
+     letter-spacing: 1px;
+ }
+
+ .form-control {
+     border-radius: 10px;
+     box-shadow: none;
+     transition: all 0.3s ease;
+     background: #f8faff;
+     border: 1px solid #ccc;
+ }
+
+ .form-control:focus {
+     border-color: #2a5298;
+     box-shadow: 0 0 10px rgba(42, 82, 152, 0.4);
+ }
+
+ .btn-login {
+     background: linear-gradient(135deg, #1e3c72, #2a5298);
+     color: #fff;
+     border-radius: 10px;
+     font-weight: 600;
+     transition: 0.3s;
+     width: 100%;
+     box-shadow: 0 4px 10px rgba(30, 60, 114, 0.3);
+ }
+
+ .btn-login:hover {
+     background: linear-gradient(135deg, #2a5298, #1e3c72);
+     box-shadow: 0 6px 20px rgba(30, 60, 114, 0.5);
+ }
+
+ .input-group-text {
+     background: transparent;
+     border: none;
+ }
+
+ .input-group i {
+     color: #2a5298;
+     font-size: 18px;
+ }
+
+ .footer-text {
+     text-align: center;
+     margin-top: 15px;
+     font-size: 14px;
+     color: #444;
+ }
+
+ .footer-text a {
+     color: #2a5298;
+     text-decoration: none;
+     font-weight: 600;
+ }
+
+ .footer-text a:hover {
+     text-decoration: underline;
+ }

@@ -1,0 +1,130 @@
+<div class="container">
+    <h2 class="page-title"><i class="fa fa-car"></i> Vehicle Management</h2>
+
+    <div class="row">
+        <!-- ===== Vehicle List ===== -->
+        <div class="col-lg-8 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-list"></i> Vehicle List
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover align-middle text-center">
+                            <thead>
+                                <tr>
+                                    <th>Car ID</th>
+                                    <th>Brand</th>
+                                    <th>Model</th>
+                                    <th>Year</th>
+                                    <th>Color</th>
+                                    <th>Rate (₹/Day)</th>
+                                    <th>Reg No</th>
+                                    <th>Image</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (item of carList; track $index) {
+                                <tr>
+                                    <td>{{$index}}</td>
+                                    <td>{{item.brand}}</td>
+                                    <td>{{item.model}}</td>
+                                    <td>{{item.year}}</td>
+                                    <td>{{item.color}}</td>
+                                    <td>{{item.dailyRate}}</td>
+                                    <td>{{item.regNo}}</td>
+                                    <td><img src="https://via.placeholder.com/70" class="img-fluid rounded shadow-sm"
+                                            alt="Car"></td>
+                                    <td class="text-center">
+                                        <button class="btn btn-action btn-edit me-2" (click)="onEdit(item)">
+                                            <i class="fa fa-pencil"></i>
+                                            <span>Edit</span>
+                                        </button>
+                                        <button class="btn btn-action btn-delete" (click)="onDeleteCarById(item.carId)">
+                                            <i class="fa fa-trash"></i>
+                                            <span>Delete</span>
+                                        </button>
+                                    </td>
+
+                                </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== Vehicle Form ===== -->
+        <div class="col-lg-4 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fa fa-plus"></i> Add / Edit Vehicle
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Brand</label>
+                            <input type="text" [(ngModel)]="newCarObj.brand" name="brand" class="form-control"
+                                placeholder="Enter brand">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Model</label>
+                            <input type="text" [(ngModel)]="newCarObj.model" name="model" class="form-control"
+                                placeholder="Enter model">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Year</label>
+                            <input type="number" [(ngModel)]="newCarObj.year" name="year" class="form-control"
+                                placeholder="Enter year">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Color</label>
+                            <input type="text" [(ngModel)]="newCarObj.color" name="color" class="form-control"
+                                placeholder="Enter color">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Daily Rate (₹)</label>
+                            <input type="number" [(ngModel)]="newCarObj.dailyRate" name="dailyRate" class="form-control"
+                                placeholder="Enter rate per day">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Registration No</label>
+                            <input type="text" [(ngModel)]="newCarObj.regNo" name="regNo" class="form-control"
+                                placeholder="Enter registration number">
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Car Image URL</label>
+                            <input type="text" [(ngModel)]="newCarObj.carImage" name="carImage" class="form-control"
+                                placeholder="Paste image URL">
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            @if(newCarObj.carId==0){
+                            <button type="button" (click)="onSaveCar()" class="btn btn-custom">
+                                <i class="fa fa-save"></i> Save Vehicle
+                            </button>
+
+                            } @else {
+                            <button type="button" (click)="onUpdateCar()" class="btn btn-warning">
+                                <i class="fa fa-save"></i> Update Vehicle
+                            </button>
+                            }
+
+                            <button type="reset" class="btn btn-outline-secondary">
+                                <i class="fa fa-refresh"></i> Clear
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

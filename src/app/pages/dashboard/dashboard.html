@@ -1,0 +1,108 @@
+<div class="container-fluid py-4">
+  <h3 class="fw-bold mb-4 text-center">Admin Dashboard</h3>
+
+  <!-- Summary Cards -->
+
+  <div class="row g-4 mb-4">
+    <div class="col-md-3">
+      <div class="dashboard-card gradient-blue">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-white-50 mb-1">Total Bookings</h6>
+            <h4 class="text-white mb-0">{{ totalBookings }}</h4>
+          </div>
+          <i class="fa fa-calendar-check text-white fs-3"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="dashboard-card gradient-green">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-white-50 mb-1">Total Revenue</h6>
+            <h4 class="text-white mb-0">₹{{ totalRevenue}}</h4>
+          </div>
+          <i class="fa fa-wallet text-white fs-3"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="dashboard-card gradient-orange">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-white-50 mb-1">Active Cars</h6>
+            <h4 class="text-white mb-0">{{ activeCars }}</h4>
+          </div>
+          <i class="fa fa-car text-white fs-3"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="dashboard-card gradient-pink">
+        <div class="d-flex justify-content-between align-items-center">
+          <div>
+            <h6 class="text-white-50 mb-1">Registered Users</h6>
+            <h4 class="text-white mb-0">{{ totalUsers }}</h4>
+          </div>
+          <i class="fa fa-users text-white fs-3"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Section -->
+
+  <div class="row g-4 mb-4">
+    <div class="col-lg-6">
+      <div class="card shadow-sm rounded-4">
+        <div class="card-header bg-transparent fw-bold">📊 Booking Trends</div>
+        <div class="card-body">
+          <canvas id="bookingChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card shadow-sm rounded-4">
+        <div class="card-header bg-transparent fw-bold">🏙️ Top Cities</div>
+        <div class="card-body">
+          <canvas id="cityChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Revenue + Recent Bookings -->
+  <div class="row g-4">
+    <div class="col-lg-4 mb-3">
+      <div class="card shadow-sm rounded-4">
+        <div class="card-header bg-transparent fw-bold">💰 Revenue Overview</div>
+        <div class="card-body">
+          <canvas id="revenueChart"></canvas>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6">
+      <div class="card shadow-sm rounded-4">
+        <div class="card-header bg-transparent fw-bold">🕒 Recent Bookings</div>
+        <div class="card-body recent-bookings">
+          @for (booking of recentBookings; track booking) {
+            <div class="booking-item">
+              <div>
+                <strong>{{ booking.customerName }}</strong>
+                <span class="text-muted small ms-1">({{ booking.city }})</span>
+              </div>
+              <div>
+                <span class="badge bg-success">₹{{ booking.amount }}</span>
+              </div>
+            </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

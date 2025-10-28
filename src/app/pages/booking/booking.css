@@ -1,0 +1,46 @@
+.page-title {
+  margin: 30px 0;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.card {
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+  font-size: 16px;
+}
+
+.booking-list {
+  max-height: 70vh; /* keeps it visible within viewport */
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.booking-card {
+  background: linear-gradient(135deg, #f8f9fa, #ffffff);
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.booking-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-outline-primary,
+.btn-outline-danger {
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.booking-form-card {
+  min-height: 100%;
+}
