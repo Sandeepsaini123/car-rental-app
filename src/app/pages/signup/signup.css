@@ -1,0 +1,65 @@
+/* ---------- Signup Page Styles ---------- */
+.signup-container {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #333;
+}
+
+.signup-card {
+  width: 480px;
+  background: #fff;
+  border-radius: 20px;
+  animation: fadeInUp 0.6s ease;
+}
+
+.card-header {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: #fff;
+  border-radius: 15px 15px 0 0;
+  padding: 20px 10px;
+}
+
+.input-group-text {
+  background-color: #f8f9fa;
+  border-radius: 10px 0 0 10px;
+}
+
+.form-control {
+  border-radius: 0 10px 10px 0;
+  border: 1px solid #dee2e6;
+  padding: 10px;
+}
+
+.form-control:focus {
+  border-color: #2a5298;
+  box-shadow: 0 0 5px rgba(42, 82, 152, 0.3);
+}
+
+.btn-signup {
+  background: linear-gradient(135deg, #2a5298, #1e3c72);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-signup:hover {
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(30, 60, 114, 0.3);
+}
+
+a.text-primary:hover {
+  text-decoration: underline;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

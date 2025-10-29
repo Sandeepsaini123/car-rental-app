@@ -10,7 +10,7 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 })
 export class Booking implements OnInit {
 
-  bookingSrv = inject(BookingService);
+  bookingSrv = inject(BookingService);  
 
   carList: any[] = [];
   bookingList: any[] = [];
