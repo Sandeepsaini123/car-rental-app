@@ -63,66 +63,95 @@
                     <i class="fa fa-plus"></i> Add / Edit Vehicle
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form [formGroup]="carForm" (ngSubmit)="onSubmit()" novalidate>
+
                         <div class="mb-3">
                             <label class="form-label">Brand</label>
-                            <input type="text" [(ngModel)]="newCarObj.brand" name="brand" class="form-control"
-                                placeholder="Enter brand">
+                            <input type="text" formControlName="brand" class="form-control" placeholder="Enter brand" />
+                            @if(f['brand'].touched && f['brand'].invalid) {
+                            <small class="text-danger">
+                                @if(f['brand'].errors?.['required']) { Brand is required. }
+                                @if(f['brand'].errors?.['minlength']) { Minimum 2 characters required. }
+                            </small>
+                            }
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Model</label>
-                            <input type="text" [(ngModel)]="newCarObj.model" name="model" class="form-control"
-                                placeholder="Enter model">
+                            <input type="text" formControlName="model" class="form-control" placeholder="Enter model" />
+                            @if(f['model'].touched && f['model'].invalid) {
+                            <small class="text-danger">Model is required.</small>
+                            }
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Year</label>
-                            <input type="number" [(ngModel)]="newCarObj.year" name="year" class="form-control"
-                                placeholder="Enter year">
+                            <input type="number" formControlName="year" class="form-control" placeholder="Enter year" />
+                            @if(f['year'].touched && f['year'].invalid) {
+                            <small class="text-danger">
+                                @if(f['year'].errors?.['required']) { Year is required. }
+                                @if(f['year'].errors?.['min'] || f['year'].errors?.['max']) { Enter valid year
+                                (1900–2099). }
+                            </small>
+                            }
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Color</label>
-                            <input type="text" [(ngModel)]="newCarObj.color" name="color" class="form-control"
-                                placeholder="Enter color">
+                            <input type="text" formControlName="color" class="form-control" placeholder="Enter color" />
+                            @if(f['color'].touched && f['color'].invalid) {
+                            <small class="text-danger">Color is required.</small>
+                            }
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Daily Rate (₹)</label>
-                            <input type="number" [(ngModel)]="newCarObj.dailyRate" name="dailyRate" class="form-control"
-                                placeholder="Enter rate per day">
+                            <input type="number" formControlName="dailyRate" class="form-control"
+                                placeholder="Enter rate per day" />
+                            @if(f['dailyRate'].touched && f['dailyRate'].invalid) {
+                            <small class="text-danger">
+                                @if(f['dailyRate'].errors?.['required']) { Daily rate is required. }
+                                @if(f['dailyRate'].errors?.['min']) { Must be zero or greater. }
+                            </small>
+                            }
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Registration No</label>
-                            <input type="text" [(ngModel)]="newCarObj.regNo" name="regNo" class="form-control"
-                                placeholder="Enter registration number">
+                            <input type="text" formControlName="regNo" class="form-control"
+                                placeholder="Enter registration number" />
+                            @if(f['regNo'].touched && f['regNo'].invalid) {
+                            <small class="text-danger">
+                                @if(f['regNo'].errors?.['required']) { Registration number required. }
+                                @if(f['regNo'].errors?.['pattern']) { Invalid format (letters/numbers only). }
+                            </small>
+                            }
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Car Image URL</label>
-                            <input type="text" [(ngModel)]="newCarObj.carImage" name="carImage" class="form-control"
-                                placeholder="Paste image URL">
+                            <input type="url" formControlName="carImage" class="form-control"
+                                placeholder="Paste image URL (optional)" />
                         </div>
 
                         <div class="d-grid gap-2">
-                            @if(newCarObj.carId==0){
-                            <button type="button" (click)="onSaveCar()" class="btn btn-custom">
+                            @if(f['carId'].value == 0) {
+                            <button type="submit" class="btn btn-custom" [disabled]="carForm.invalid">
                                 <i class="fa fa-save"></i> Save Vehicle
                             </button>
-
                             } @else {
-                            <button type="button" (click)="onUpdateCar()" class="btn btn-warning">
+                            <button type="submit" class="btn btn-warning" [disabled]="carForm.invalid">
                                 <i class="fa fa-save"></i> Update Vehicle
                             </button>
                             }
 
-                            <button type="reset" class="btn btn-outline-secondary">
+                            <button type="button" class="btn btn-outline-secondary" (click)="onClear()">
                                 <i class="fa fa-refresh"></i> Clear
                             </button>
                         </div>
                     </form>
+
+
                 </div>
             </div>
         </div>

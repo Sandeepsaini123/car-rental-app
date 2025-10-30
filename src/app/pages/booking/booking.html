@@ -82,15 +82,26 @@
           Add / Edit Booking
         </div>
         <div class="card-body">
-          <form [formGroup]="bookingForm">
+          <form [formGroup]="bookingForm" novalidate>
+
             <div class="row mb-3">
               <div class="col-md-6">
                 <label class="form-label">Customer Name</label>
                 <input type="text" formControlName="customerName" class="form-control" placeholder="Enter name" />
+                @if(f['customerName'].touched && f['customerName'].invalid) {
+                <small class="text-danger">
+                  @if(f['customerName'].errors?.['required']) { Name is required. }
+                  @if(f['customerName'].errors?.['minlength']) { Minimum 2 characters required. }
+                </small>
+                }
               </div>
+
               <div class="col-md-6">
                 <label class="form-label">City</label>
                 <input type="text" formControlName="customerCity" class="form-control" placeholder="Enter city" />
+                @if(f['customerCity'].touched && f['customerCity'].invalid) {
+                <small class="text-danger">City is required.</small>
+                }
               </div>
             </div>
 
@@ -98,25 +109,46 @@
               <div class="col-md-6">
                 <label class="form-label">Mobile No</label>
                 <input type="text" formControlName="mobileNo" class="form-control" placeholder="Enter mobile" />
+                @if(f['mobileNo'].touched && f['mobileNo'].invalid) {
+                <small class="text-danger">
+                  @if(f['mobileNo'].errors?.['required']) { Mobile number is required. }
+                  @if(f['mobileNo'].errors?.['pattern']) { Enter a valid 10-digit number. }
+                </small>
+                }
               </div>
+
               <div class="col-md-6">
                 <label class="form-label">Email</label>
                 <input type="email" formControlName="email" class="form-control" placeholder="Enter email" />
+                @if(f['email'].touched && f['email'].invalid) {
+                <small class="text-danger">
+                  @if(f['email'].errors?.['required']) { Email is required. }
+                  @if(f['email'].errors?.['email']) { Enter a valid email address. }
+                </small>
+                }
               </div>
             </div>
 
             <div class="row mb-3">
               <div class="col-md-6">
-                <label class="form-label">Car ID</label>
+                <label class="form-label">Car</label>
                 <select formControlName="carId" class="form-select">
+                  <option value="">-- Select Car --</option>
                   @for (item of carList; track $index) {
-                  <option [value]="item.carId">{{item.regNo}}</option>
+                  <option [value]="item.carId">{{ item.regNo }}</option>
                   }
                 </select>
+                @if(f['carId'].touched && f['carId'].invalid) {
+                <small class="text-danger">Please select a car.</small>
+                }
               </div>
+
               <div class="col-md-6">
                 <label class="form-label">Booking Date</label>
                 <input type="date" formControlName="bookingDate" class="form-control" />
+                @if(f['bookingDate'].touched && f['bookingDate'].invalid) {
+                <small class="text-danger">Booking date is required.</small>
+                }
               </div>
             </div>
 
@@ -124,22 +156,36 @@
               <div class="col-md-6">
                 <label class="form-label">Discount (%)</label>
                 <input type="number" formControlName="discount" class="form-control" placeholder="Enter discount" />
+                @if(f['discount'].touched && f['discount'].invalid) {
+                <small class="text-danger">
+                  @if(f['discount'].errors?.['required']) { Discount is required. }
+                  @if(f['discount'].errors?.['min'] || f['discount'].errors?.['max']) { Must be between 0 and 100. }
+                </small>
+                }
               </div>
+
               <div class="col-md-6">
                 <label class="form-label">Total Bill (₹)</label>
                 <input type="number" formControlName="totalBillAmount" class="form-control" placeholder="Enter total" />
+                @if(f['totalBillAmount'].touched && f['totalBillAmount'].invalid) {
+                <small class="text-danger">
+                  @if(f['totalBillAmount'].errors?.['required']) { Total bill is required. }
+                  @if(f['totalBillAmount'].errors?.['min']) { Must be zero or greater. }
+                </small>
+                }
               </div>
             </div>
 
             <div class="d-grid gap-2">
-              <button type="button" (click)="onSave()" class="btn btn-success">
+              <button type="button" (click)="onSave()" class="btn btn-success" [disabled]="bookingForm.invalid">
                 <i class="fa fa-save"></i> Save Booking
               </button>
-              <button type="reset" class="btn btn-outline-secondary">
+              <button type="reset" class="btn btn-outline-secondary" (click)="bookingForm.reset({ bookingId: 0 })">
                 <i class="fa fa-refresh"></i> Clear
               </button>
             </div>
           </form>
+
         </div>
       </div>
     </div>
